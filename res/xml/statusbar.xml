@@ -22,4 +22,16 @@
             android:summary="@string/icon_manager_summary">
             <intent android:action="com.android.settings.action.STATUS_BAR_TUNER" />
         </Preference>
+
+    <PreferenceCategory
+        android:key="statusbar_gestures_category"
+        android:title="@string/statusbar_gestures_category_title"
+
+    <!-- Double tap to sleep -->
+    <com.corvus.support.preferences.SystemSettingSwitchPreference
+        android:key="double_tap_sleep_gesture"
+        android:title="@string/double_tap_sleep_gesture_title"
+        android:summary="@string/double_tap_sleep_gesture_summary"
+        android:defaultValue="true" />
+    </PreferenceCategory>
 </PreferenceScreen>
