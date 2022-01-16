@@ -113,4 +113,8 @@
 
     <!-- Title for connected TWS device group [CHAR LIMIT=none]-->
     <string name="connected_tws_device_saved_title">Saved Earbuds</string>
+    
+    <!-- Theme fragment -->
+    <string name="raven_themes_title">Theming</string>
+    <string name="raven_themes_summary">Monet,Custom Accent,Fonts,Icons</string>
 </resources>
