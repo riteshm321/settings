@@ -113,5 +113,16 @@
     
     <!-- Theme fragment -->
     <string name="raven_themes_title">Theming</string>
-    <string name="raven_themes_summary">Monet,Custom Accent,Fonts,Icons</string>
+    <string name="raven_themes_summary">Customise color, icon shapes and fonts</string>
+    <string name="raven_statusbar_title">Statusbar</string>
+    <string name="raven_statusbar_summary">Date&amp;Time, Network traffic, icons toggles</string>
+    <string name="raven_quicksettings_title">Quick Settings</string>
+    <string name="raven_quicksettings_summary">Brightness bar, QS Clock and styles, QS Panel</string>
+    <string name="raven_notification_title">Notification</string>
+    <string name="raven_notification_summary">Heads-up, Notification Light, Headers, Notification count</string>
+    <string name="raven_lockscreen_title">Lockscreen</string>
+    <string name="raven_lockscreen_summary">Visualiser, Ambient display, gestures</string>
+    <string name="raven_battery_title">Battery</string>
+    <string name="raven_battery_summary">Battery styles and modification</string>
+
 </resources>
