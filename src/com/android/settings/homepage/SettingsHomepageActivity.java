@@ -28,6 +28,7 @@ import androidx.annotation.Nullable;
 import android.animation.LayoutTransition;
 import android.app.ActivityManager;
 import android.app.settings.SettingsEnums;
+import android.app.WallpaperManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.UserInfo;
@@ -37,6 +38,8 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.text.TextUtils;
 import android.util.ArraySet;
+import android.os.SystemProperties;
+import android.os.Build;
 import android.util.FeatureFlagUtils;
 import android.util.Log;
 import android.view.View;
@@ -44,10 +47,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toolbar;
+import android.graphics.drawable.Drawable;
 
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -118,6 +124,9 @@ public class SettingsHomepageActivity extends FragmentActivity implements
     
     // A regular layout shows icons on homepage, whereas a simplified layout doesn't.
     private boolean mIsRegularLayout = true;
+
+    ImageView avatarView, btnCorvusVersion, logoView;
+    TextView crvsVersion, crvsMaintainer, crvsDevice, crvsBuildDate, crvsBuildType;
 
     /** A listener receiving homepage loaded events. */
     public interface HomepageLoadedListener {
@@ -341,6 +350,47 @@ public class SettingsHomepageActivity extends FragmentActivity implements
                 getLifecycle().addObserver(new AvatarViewMixin(this, avatarTwoPaneView));
             }
         }
+
+        btnCorvusVersion = findViewById(R.id.btnCorvusVersion);
+        btnCorvusVersion.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showBottomSheetDialog();
+                }
+            });
+    }
+
+    private void showBottomSheetDialog() {
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this, R.style.CorvusBottomSheetDialogTheme);
+        bottomSheetDialog.setContentView(R.layout.corvus_bottom_sheet);
+
+        final WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
+        final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
+
+        logoView = bottomSheetDialog.findViewById(R.id.logoView);
+        logoView.setImageDrawable(wallpaperDrawable);
+        logoView.setImageAlpha(120);
+        logoView.setPadding(0,10,0,10);
+
+        crvsDevice = bottomSheetDialog.findViewById(R.id.corvus_device);
+        crvsVersion = bottomSheetDialog.findViewById(R.id.corvus_version);
+        crvsMaintainer = bottomSheetDialog.findViewById(R.id.corvus_maintainer);
+        crvsBuildDate = bottomSheetDialog.findViewById(R.id.corvus_build_date);
+        crvsBuildType = bottomSheetDialog.findViewById(R.id.corvus_build_type);
+
+        String buildDate = SystemProperties.get("ro.build.date").substring(0,10);
+
+        crvsDevice.setText(SystemProperties.get("ro.product.device") + "(" + SystemProperties.get("ro.product.model") + ")");
+        crvsVersion.setText("Corvus_v"
+                + SystemProperties.get("ro.corvus.build.version")
+                + "-"
+                + SystemProperties.get("ro.corvus.codename"));
+        crvsVersion.setSelected(true);
+        crvsMaintainer.setText(SystemProperties.get("ro.corvus.maintainer"));
+        crvsBuildDate.setText(buildDate);
+        crvsBuildType.setText(SystemProperties.get("ro.corvus.build.type"));
+
+        bottomSheetDialog.show();
     }
 
     private void updateHomepageBackground() {

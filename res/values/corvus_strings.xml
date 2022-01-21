@@ -52,4 +52,14 @@
 
     <!-- Radio Info -->
     <string name="radio_info_title">Radio info</string>
+
+    <!-- Bottom sheet strings -->
+    <string name="open_ravendesk">Open Ravendesk</string>
+    <string name="bottomsheet_title">Corvus Version</string>
+    <string name="maintainer">Maintainer</string>
+    <string name="corvus_build_date">Build date</string>
+    <string name="build_type">Build type</string>
+
+    <!-- Maintainer string - default -->
+    <string name="maintainer_string">Unknown</string>
 </resources>

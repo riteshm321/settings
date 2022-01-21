@@ -209,4 +209,7 @@
 
     <!-- Background for multiple user settings page avatars -->
     <color name="user_avatar_color_bg">?androidprv:attr/colorSurface</color>
+
+    <!-- Corvus BottomSheet text -->
+    <color name="bottomsheet_text">@android:color/black</color>
 </resources>
