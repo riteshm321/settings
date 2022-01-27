@@ -111,7 +111,7 @@
     <!-- Summary for Wellbeing screen time usage. [CHAR LIMIT=NONE] -->
     <string name="screen_time_summary_usage_today">%1$s today</string>
     
-    <!-- Theme fragment -->
+    <!-- Corvus fragments -->
     <string name="raven_themes_title">Theming</string>
     <string name="raven_themes_summary">Customise color, icon shapes and fonts</string>
     <string name="raven_statusbar_title">Statusbar</string>
@@ -123,6 +123,9 @@
     <string name="raven_lockscreen_title">Lockscreen</string>
     <string name="raven_lockscreen_summary">Visualiser, Ambient display, gestures</string>
     <string name="raven_battery_title">Battery</string>
-    <string name="raven_battery_summary">Battery styles and modification</string>
+    <string name="raven_buttons_title">Buttons</string>
+    <string name="raven_buttons_summary">HW Keys customization | Button gestures</string>
+    <string name="raven_gaming_title">Gaming</string>
+    <string name="raven_gaming_summary">Game mode | Game overlay | Gaming features</string>
 
 </resources>
