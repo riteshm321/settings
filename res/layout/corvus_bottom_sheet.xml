@@ -48,6 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/logo"
+                    android:tint="@*android:color/accent_device_default"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_marginBottom="50dp"/>
 
@@ -57,11 +58,10 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:padding="12dp"
+                    android:padding="15dp"
                     android:text="@string/device"
                     android:textAppearance="@style/TextAppearance.Medium"
-                    android:textColor="@color/bottomsheet_text"
-                    android:maxLines="1"/>
+                    android:textColor="@color/bottomsheet_text"/>
 
             </FrameLayout>
 
@@ -176,5 +176,22 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_ravendesk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/raven_button"
+        android:drawableStart="@drawable/ic_download_for_offline"
+        android:drawablePadding="5dp"
+        android:drawableTint="@*android:color/accent_device_default"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:text="@string/open_ravendesk"
+        android:textColor="@*android:color/accent_device_default"
+        android:visibility="gone" />
 
 </LinearLayout>
