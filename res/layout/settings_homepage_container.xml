@@ -14,6 +14,7 @@
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/settings_homepage_container"
     android:layout_width="match_parent"
@@ -24,24 +25,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:touchscreenBlocksFocus="false"
-        android:keyboardNavigationCluster="false">
-        
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            app:cardCornerRadius="28dp">
-            
+            app:cardCornerRadius="28dp"
+            app:cardElevation="14dp">
+
         <LinearLayout
             android:id="@+id/app_bar_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:theme="@style/Theme.TabTheme"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <include
@@ -57,13 +53,13 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/tab_layout_background"
-                app:tabIndicator="@*android:color/accent_device_default"
-                app:tabIndicatorHeight="3dp"
-                app:tabIndicatorFullWidth="false"
-                app:tabGravity="center"
+                android:background="@android:color/transparent"
+                app:tabIndicator="@drawable/tabs_indicator_background"
+                app:tabMaxWidth="0dp"
+                app:tabGravity="fill"
+                app:tabMode="fixed"
                 app:tabTextAppearance="@style/TextAppearance.Tab"
-                app:tabIndicatorColor="@*android:color/accent_device_default"
+                app:tabIndicatorColor="?androidprv:attr/colorAccentPrimaryVariant"
                 app:tabSelectedTextColor="@*android:color/accent_device_default"
                 app:tabIconTint="@*android:color/accent_device_default"
                 app:tabTextColor="?android:attr/textColorSecondary"
@@ -71,15 +67,18 @@
         </LinearLayout>
         
         </androidx.cardview.widget.CardView>
-        
-    </com.google.android.material.appbar.AppBarLayout>
-    
+
         <FrameLayout
             android:id="@+id/contextual_cards_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/contextual_card_side_margin"
             android:layout_marginEnd="@dimen/contextual_card_side_margin"/>
+
+        <FrameLayout
+            android:id="@+id/suggestion_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"

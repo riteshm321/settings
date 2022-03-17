@@ -248,7 +248,7 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         // When it's large screen 2-pane and Settings app is in the background, receiving an Intent
         // will not recreate this activity. Update the intent for this case.
         setIntent(intent);
-        reloadHighlightMenuKey();
+        // reloadHighlightMenuKey();
         if (isFinishing()) {
             return;
         }
@@ -496,13 +496,12 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         return getString(DEFAULT_HIGHLIGHT_MENU_KEY);
     }
 
-    private void reloadHighlightMenuKey() {
-        mMainFragment.getArguments().putStr
-        ing(SettingsActivity.EXTRA_FRAGMENT_ARG_KEY,
-                getHighlightMenuKey());
-        mMainFragment.reloadHighlightMenuKey();
-    }
-    
+    // private void reloadHighlightMenuKey() {
+    //     mMainFragment.getArguments().putString(SettingsActivity.EXTRA_FRAGMENT_ARG_KEY,
+    //             getHighlightMenuKey());
+    //     mMainFragment.reloadHighlightMenuKey();
+    // }
+
     private void setupTabIcons() {
         mTabLayout.getTabAt(0).setIcon(tabIcons[0]);
         mTabLayout.getTabAt(1).setIcon(tabIcons[1]);
@@ -513,7 +512,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         mViewPager = findViewById(R.id.viewPager);
 
         mTabLayout.setupWithViewPager(mViewPager);
-        // setupTabTextColor(mTabLayout);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPagerAdapter.addFragment(new TopLevelSettings(), "Device Settings");
         viewPagerAdapter.addFragment(new CorvusSettings(), "Corvus Settings");

@@ -28,6 +28,7 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_gravity="center_vertical"
+        android:textSize="26sp"
         android:text="@string/settings_label"
         />
 
@@ -41,10 +42,5 @@
         android:visibility="invisible"
         android:accessibilityTraversalAfter="@id/homepage_title"
         android:contentDescription="@string/search_bar_account_avatar_content_description"/>
-
-    <FrameLayout
-        android:id="@+id/suggestion_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
 </LinearLayout>
