@@ -123,9 +123,10 @@
     <string name="raven_lockscreen_title">Lockscreen</string>
     <string name="raven_lockscreen_summary">Visualiser, Ambient display, gestures</string>
     <string name="raven_battery_title">Battery</string>
+    <string name="raven_battery_summary">Battery styles customisation</string>
     <string name="raven_buttons_title">Buttons</string>
-    <string name="raven_buttons_summary">HW Keys customization | Button gestures</string>
+    <string name="raven_buttons_summary">Hardware keys lights and configuration</string>
     <string name="raven_gaming_title">Gaming</string>
-    <string name="raven_gaming_summary">Game mode | Game overlay | Gaming features</string>
+    <string name="raven_gaming_summary">Game overlay, notification mode and performance config</string>
 
 </resources>
