@@ -33,6 +33,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.UserInfo;
 import android.content.res.Configuration;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -126,6 +127,7 @@ public class SettingsHomepageActivity extends FragmentActivity implements
     // A regular layout shows icons on homepage, whereas a simplified layout doesn't.
     private boolean mIsRegularLayout = true;
 
+    FrameLayout frameLayout;
     Button btnRavenDesk;
     ImageView avatarView, btnCorvusVersion, logoView;
     TextView crvsVersion, crvsMaintainer, crvsDevice, crvsBuildDate, crvsBuildType;
@@ -374,6 +376,8 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         logoView.setImageAlpha(120);
         logoView.setPadding(0,10,0,10);
 
+        frameLayout = bottomSheetDialog.findViewById(R.id.frame_build_type);
+
         crvsDevice = bottomSheetDialog.findViewById(R.id.corvus_device);
         crvsVersion = bottomSheetDialog.findViewById(R.id.corvus_version);
         crvsMaintainer = bottomSheetDialog.findViewById(R.id.corvus_maintainer);
@@ -398,6 +402,9 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
         if(buildType.equals("Official")){
           btnRavenDesk.setVisibility(View.VISIBLE);
+          frameLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.palette_list_color_green)));
+        } else {
+          frameLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.palette_list_color_red)));  
         }
 
         assert btnRavenDesk != null;
