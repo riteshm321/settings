@@ -73,4 +73,11 @@
         android:title="@string/raven_gaming_title"
         android:summary="@string/raven_gaming_summary"/>
 
+    <Preference
+        android:fragment="com.android.settings.corvus.fragments.Misc"
+        android:key="misc_fragment"
+        android:icon="@drawable/ic_raven_misc"
+        android:title="@string/raven_misc_title"
+        android:summary="@string/raven_misc_summary"/>
+
 </PreferenceScreen>
