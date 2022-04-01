@@ -128,7 +128,7 @@
     <string name="raven_buttons_summary">Hardware keys and Navbar config</string>
     <string name="raven_gaming_title">Gaming</string>
     <string name="raven_gaming_summary">Game overlay, notification mode and performance config</string>
-    <string name="raven_misc_title">miscellaneous</string>
+    <string name="raven_misc_title">Miscellaneous</string>
     <string name="raven_misc_summary">Extra stuffs falls here</string>
 
     <!-- Navigation bar -->
