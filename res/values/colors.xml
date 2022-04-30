@@ -210,6 +210,12 @@
     <!-- Background for multiple user settings page avatars -->
     <color name="user_avatar_color_bg">?androidprv:attr/colorSurface</color>
 
-    <!-- Corvus BottomSheet text -->
-    <color name="bottomsheet_text">@android:color/black</color>
+    <color name="google_grey700">#5f6368</color>
+    <color name="edit_background_base">@color/google_grey700</color>
+    <color name="option_border_default">@color/edit_background_base</color>
+
+    <!-- Corvus bottom sheet colors -->
+    <color name="corvus_official_color">#1aa260</color>
+    <color name="corvus_unofficial_color">#DB4437</color>
+    <color name="corvus_version_cardbg">@android:color/system_accent2_200</color>
 </resources>

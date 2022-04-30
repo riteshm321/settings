@@ -53,7 +53,7 @@
     <!-- Material inverse ripple color, useful for inverted backgrounds. -->
     <color name="ripple_material_inverse">@*android:color/ripple_material_light</color>
 
-    <!-- Corvus BottomSheet text -->
-    <color name="bottomsheet_text">@android:color/white</color>
+    <!-- Corvus bottom sheet colors -->
+    <color name="corvus_version_cardbg">@android:color/system_accent2_600</color>
 </resources>
 

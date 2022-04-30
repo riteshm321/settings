@@ -46,12 +46,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toolbar;
 import android.graphics.drawable.Drawable;
+import android.animation.Animator;
 
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
@@ -84,6 +85,8 @@ import com.android.settings.homepage.contextualcards.ContextualCardsFragment;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.Utils;
 import com.android.settingslib.core.lifecycle.HideNonSystemOverlayMixin;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 import java.net.URISyntaxException;
 import java.util.Set;
@@ -127,10 +130,11 @@ public class SettingsHomepageActivity extends FragmentActivity implements
     // A regular layout shows icons on homepage, whereas a simplified layout doesn't.
     private boolean mIsRegularLayout = true;
 
-    FrameLayout frameLayout;
+    LinearLayout linearLayout, topContent;
     Button btnRavenDesk;
-    ImageView avatarView, btnCorvusVersion, logoView;
-    TextView crvsVersion, crvsMaintainer, crvsDevice, crvsBuildDate, crvsBuildType;
+    ImageView avatarView, btnCorvusVersion, wallpaperView, statusChip;
+    TextView crvsVersion, crvsMaintainer, crvsDevice, crvsBuildDate, crvsBuildType, checkGapps;
+    LottieAnimationView welcomeAnimation;
 
     /** A listener receiving homepage loaded events. */
     public interface HomepageLoadedListener {
@@ -371,27 +375,33 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         final WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
         final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
 
-        logoView = bottomSheetDialog.findViewById(R.id.logoView);
-        logoView.setImageDrawable(wallpaperDrawable);
-        logoView.setImageAlpha(120);
-        logoView.setPadding(0,10,0,10);
+        wallpaperView = bottomSheetDialog.findViewById(R.id.wallpaper_view);
+        wallpaperView.setImageDrawable(wallpaperDrawable);
+        wallpaperView.setImageAlpha(140);
 
-        frameLayout = bottomSheetDialog.findViewById(R.id.frame_build_type);
+        statusChip = bottomSheetDialog.findViewById(R.id.status_chip);
+
+        linearLayout = bottomSheetDialog.findViewById(R.id.frame_build_type);
+        topContent = bottomSheetDialog.findViewById(R.id.top_content_holder);
+
+        welcomeAnimation = bottomSheetDialog.findViewById(R.id.welcome_animation);
+        playWelcomeAnim();
 
         crvsDevice = bottomSheetDialog.findViewById(R.id.corvus_device);
         crvsVersion = bottomSheetDialog.findViewById(R.id.corvus_version);
         crvsMaintainer = bottomSheetDialog.findViewById(R.id.corvus_maintainer);
         crvsBuildDate = bottomSheetDialog.findViewById(R.id.corvus_build_date);
         crvsBuildType = bottomSheetDialog.findViewById(R.id.corvus_build_type);
+        checkGapps = bottomSheetDialog.findViewById(R.id.check_gapps);
 
-        String buildDate = SystemProperties.get("ro.build.date").substring(0,10);
+        String buildDate = SystemProperties.get("ro.corvus.build.date");
+        String fullPackageName = SystemProperties.get("ro.corvus.version");
 
-        crvsDevice.setText(SystemProperties.get("ro.product.device") + "(" + SystemProperties.get("ro.product.model") + ")");
+        crvsDevice.setText(SystemProperties.get("ro.corvus.device"));
         crvsVersion.setText("Corvus_v"
                 + SystemProperties.get("ro.corvus.build.version")
                 + "-"
                 + SystemProperties.get("ro.corvus.codename"));
-        crvsVersion.setSelected(true);
         crvsMaintainer.setText(SystemProperties.get("ro.corvus.maintainer"));
         crvsBuildDate.setText(buildDate);
         String buildType = SystemProperties.get("ro.corvus.build.type");
@@ -402,9 +412,17 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
         if(buildType.equals("Official")){
           btnRavenDesk.setVisibility(View.VISIBLE);
-          frameLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.palette_list_color_green)));
+          statusChip.setBackgroundResource(R.drawable.icon_official);
+          linearLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.corvus_official_color)));
         } else {
-          frameLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.palette_list_color_red)));  
+          statusChip.setBackgroundResource(R.drawable.icon_unofficial);
+          linearLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.corvus_unofficial_color)));  
+        }
+
+        if (fullPackageName.contains("Gapps")) {
+            checkGapps.setText("Gapps");
+        } else {
+            checkGapps.setText("Vanilla");
         }
 
         assert btnRavenDesk != null;
@@ -419,6 +437,34 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         });
 
         bottomSheetDialog.show();
+    }
+
+    private void playWelcomeAnim() {
+        welcomeAnimation.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+                linearLayout.setVisibility(View.INVISIBLE);
+                topContent.setVisibility(View.INVISIBLE);
+                welcomeAnimation.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                welcomeAnimation.setVisibility(View.GONE);
+                linearLayout.setVisibility(View.VISIBLE);
+                topContent.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+                // Yes, we need more useless boilerplate
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+                // Another Blank Space - Taylor swift
+            }
+        });
     }
 
     private void updateHomepageBackground() {
