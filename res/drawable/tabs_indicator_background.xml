@@ -19,6 +19,6 @@
     android:shape="rectangle">
 
     <solid android:color="?android:attr/textColorSecondaryInverse"/>
-    <corners android:radius="8dp"/>
+    <corners android:radius="12dp"/>
     <size android:height="4dp"/>
 </shape>

@@ -122,11 +122,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
     private boolean mIsTwoPane;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
-    private int[] tabIcons = {
-            R.drawable.tab_ic_device,
-            R.drawable.tab_ic_corvus
-    };
-    
     // A regular layout shows icons on homepage, whereas a simplified layout doesn't.
     private boolean mIsRegularLayout = true;
 
@@ -223,7 +218,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
         updateAppBarMinHeight();
         initHomepageContainer();
-        setupTabIcons();
         updateHomepageAppBar();
         updateHomepageBackground();
         mLoadedListeners = new ArraySet<>();
@@ -625,11 +619,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
     //             getHighlightMenuKey());
     //     mMainFragment.reloadHighlightMenuKey();
     // }
-
-    private void setupTabIcons() {
-        mTabLayout.getTabAt(0).setIcon(tabIcons[0]);
-        mTabLayout.getTabAt(1).setIcon(tabIcons[1]);
-    }
 
     private void initHomepageContainer() {
         mTabLayout = findViewById(R.id.tab_layout);
