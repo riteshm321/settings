@@ -74,7 +74,7 @@
                     android:drawableStart="@drawable/ic_device"
                     android:drawablePadding="3dp"
                     android:textSize="18sp"
-                    android:textAppearance="@style/TextAppearance.HomepageCardTitle" />
+                    android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Headline" />
 
             </LinearLayout>
 
@@ -168,6 +168,7 @@
                     android:text="@string/maintainer"
                     android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Body2"
                     android:textColor="@*android:color/accent_device_default"
+                    android:textSize="14sp"
                     android:layout_column="1"
                     android:layout_weight="1"/>
 
@@ -175,7 +176,9 @@
                     android:id="@+id/corvus_maintainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Small"
+                    android:textSize="14sp"
                     android:layout_column="1"
                     android:layout_weight="1"/>
             </TableRow>
@@ -192,6 +195,7 @@
                     android:text="@string/corvus_build_date"
                     android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Body2"
                     android:textColor="@*android:color/accent_device_default"
+                    android:textSize="14sp"
                     android:layout_column="1"
                     android:layout_weight="1"/>
 
@@ -199,7 +203,9 @@
                     android:id="@+id/corvus_build_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Small"
+                    android:textSize="14sp"
                     android:layout_column="1"
                     android:layout_weight="1"/>
             </TableRow>
@@ -216,6 +222,7 @@
                     android:text="@string/build_type"
                     android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Body2"
                     android:textColor="@*android:color/accent_device_default"
+                    android:textSize="14sp"
                     android:layout_column="1"
                     android:layout_weight="1"/>
 
@@ -223,7 +230,9 @@
                     android:id="@+id/check_gapps"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Small"
+                    android:textSize="14sp"
                     android:layout_column="1"
                     android:layout_weight="1"/>
             </TableRow>
@@ -233,10 +242,11 @@
                     android:id="@+id/btn_ravendesk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableTint="@*android:color/accent_device_default"
                     android:background="@drawable/raven_button"
                     android:backgroundTint="@*android:color/accent_device_default"
                     android:text="@string/open_ravendesk"
+                    android:textStyle="bold"
+                    android:textColor="@color/corvus_version_cardbg"
                     android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Body1"
                     android:layout_column="1"
                     android:layout_weight="1"
