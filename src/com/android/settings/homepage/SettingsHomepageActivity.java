@@ -86,6 +86,11 @@ import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.Utils;
 import com.android.settingslib.core.lifecycle.HideNonSystemOverlayMixin;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import com.airbnb.lottie.LottieAnimationView;
 
 import java.net.URISyntaxException;
@@ -363,6 +368,7 @@ public class SettingsHomepageActivity extends FragmentActivity implements
     }
 
     private void showBottomSheetDialog() {
+        // Init the bottom sheet views
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this, R.style.CorvusBottomSheetDialogTheme);
         bottomSheetDialog.setContentView(R.layout.corvus_bottom_sheet);
 
@@ -396,7 +402,7 @@ public class SettingsHomepageActivity extends FragmentActivity implements
                 + SystemProperties.get("ro.corvus.build.version")
                 + "-"
                 + SystemProperties.get("ro.corvus.codename"));
-        crvsMaintainer.setText(SystemProperties.get("ro.corvus.maintainer"));
+        crvsMaintainer.setText(R.string.maintainer_string);
         crvsBuildDate.setText(buildDate);
         String buildType = SystemProperties.get("ro.corvus.build.type");
         crvsBuildType.setText(buildType);
@@ -404,14 +410,23 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         // Initialise intent for Ravendesk
         btnRavenDesk = bottomSheetDialog.findViewById(R.id.btn_ravendesk);
 
-        if(buildType.equals("Official")){
-          btnRavenDesk.setVisibility(View.VISIBLE);
-          statusChip.setBackgroundResource(R.drawable.icon_official);
-          linearLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.corvus_official_color)));
-        } else {
-          statusChip.setBackgroundResource(R.drawable.icon_unofficial);
-          linearLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.corvus_unofficial_color)));  
-        }
+        // Initialize Volley request to retrieve maintainers list
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        String url = "https://raw.githubusercontent.com/CorvusRom-Devices/OTA/main/maintainers.txt";
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                response -> {
+                    if (buildType.equals("Official") && response.contains(SystemProperties.get("ro.corvus.maintainer"))) {
+                        btnRavenDesk.setVisibility(View.VISIBLE);
+                        statusChip.setBackgroundResource(R.drawable.icon_official);
+                        linearLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.corvus_official_color)));
+                    } else {
+                        statusChip.setBackgroundResource(R.drawable.icon_unofficial);
+                        linearLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.corvus_unofficial_color)));  
+                    }
+                },
+                error -> linearLayout.setVisibility(View.GONE));
+        queue.add(stringRequest);
 
         if (fullPackageName.contains("Gapps")) {
             checkGapps.setText("Gapps");
