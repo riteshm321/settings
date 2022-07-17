@@ -218,4 +218,12 @@
     <color name="corvus_official_color">#1aa260</color>
     <color name="corvus_unofficial_color">#DB4437</color>
     <color name="corvus_version_cardbg">@android:color/system_accent2_200</color>
+
+    <!-- Settings dashboard -->
+    <color name="preference_color">@*android:color/system_neutral1_100</color>
+    <color name="dashboard_card_header">@*android:color/system_neutral2_50</color>
+
+    <!-- Corvus logo colors -->
+    <color name="corvus_logo_highlight">@*android:color/system_accent1_500</color>
+    <color name="corvus_logo_undertone">@*android:color/system_accent1_800</color>
 </resources>

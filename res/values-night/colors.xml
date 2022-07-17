@@ -55,5 +55,9 @@
 
     <!-- Corvus bottom sheet colors -->
     <color name="corvus_version_cardbg">@android:color/system_accent2_600</color>
+
+    <!-- Settings dashboard -->
+    <color name="preference_color">@*android:color/system_neutral1_800</color>
+    <color name="dashboard_card_header">@*android:color/system_neutral2_900</color>
 </resources>
 

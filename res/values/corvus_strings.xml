@@ -47,6 +47,8 @@
     <string name="three_finger_gesture">Swipe to screenshot</string>
     <string name="three_finger_gesture_summary">Swipe down with three fingers to take a screenshot</string>
 
+    <string name="search">Search</string>
+
     <!-- Volume link notification -->
     <string name="volume_link_notification_title">Link ring &amp; notification volumes</string>
 
@@ -68,4 +70,10 @@
 
     <!-- AdGuard DNS Option -->
     <string name="private_dns_mode_adguard" translatable="false">AdGuard DNS</string>
+
+    <!-- Dashboard categories -->
+    <string name="category_connectivity">Connectivity</string>
+    <string name="category_general">General</string>
+    <string name="category_system">System</string>
+    <string name="category_account_and_safety">Accounts and Safety</string>
 </resources>

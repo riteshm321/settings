@@ -24,13 +24,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        
+        <include
+                android:id="@+id/suggestion_container_two_pane"
+                layout="@layout/suggestion_container_two_pane"
+                android:visibility="gone"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             app:cardCornerRadius="28dp"
-            app:cardElevation="14dp">
+            app:cardBackgroundColor="@color/dashboard_card_header"
+            app:cardElevation="6dp">
 
         <LinearLayout
             android:id="@+id/app_bar_container"
