@@ -54,7 +54,6 @@
                     android:layout_gravity="center"
                     android:scaleX="1.5"
                     android:scaleY="1.5"
-                    android:tint="@*android:color/accent_device_default"
                     android:src="@drawable/logo"/>
 
                 <View

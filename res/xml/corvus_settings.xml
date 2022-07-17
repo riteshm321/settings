@@ -28,5 +28,4 @@
         android:icon="@drawable/ic_apps"
         android:title="Quick Settings"
         android:summary="Notification Panel, Brightness Slider"/>
-
 </PreferenceScreen>

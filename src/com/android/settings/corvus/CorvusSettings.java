@@ -19,11 +19,13 @@ package com.android.settings.corvus;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
@@ -44,6 +46,13 @@ public class CorvusSettings extends DashboardFragment implements
     @Override
     protected int getPreferenceScreenResId() {
         return R.xml.corvus_settings;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        final RecyclerView recyclerView = getView().findViewById(R.id.recycler_view);
+        recyclerView.setVerticalScrollBarEnabled(false);
     }
 
     @Override
@@ -91,6 +100,46 @@ public class CorvusSettings extends DashboardFragment implements
                 icon.setTint(tintColor);
             }
         }
+    }
+
+    private void setPreferenceLayout() {
+        final PreferenceScreen screen = getPreferenceScreen();
+        final int count = screen.getPreferenceCount();
+        for (int i = 0; i < count; i++) {
+            final Preference preference = screen.getPreference(i);
+
+        String key = preference.getKey();
+
+            if (key != null) {
+                if (key.equals("game_settings")){
+                    preference.setLayoutResource(R.layout.top_preference_layout);
+                }
+                if (key.equals("theming_fragment")){
+                    preference.setLayoutResource(R.layout.middle_preference_layout);
+                }
+                if (key.equals("statusbar_fragment")){
+                    preference.setLayoutResource(R.layout.middle_preference_layout);
+                }
+                if (key.equals("qs_fragment")){
+                    preference.setLayoutResource(R.layout.middle_preference_layout);
+                }
+                if (key.equals("lockscreen_fragment")){
+                    preference.setLayoutResource(R.layout.middle_preference_layout);
+                }
+                if (key.equals("battery_fragment")){
+                    preference.setLayoutResource(R.layout.middle_preference_layout);
+                }
+                if (key.equals("notification_fragment")){
+                    preference.setLayoutResource(R.layout.middle_preference_layout);
+                }
+                if (key.equals("button_fragment")){
+                    preference.setLayoutResource(R.layout.middle_preference_layout);
+                }
+                if (key.equals("misc_fragment")){
+                    preference.setLayoutResource(R.layout.bottom_preference_layout);
+                }
+            }
+	    }
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =

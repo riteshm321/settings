@@ -17,6 +17,7 @@
     xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/settings_homepage_container"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -25,12 +26,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <include
+                android:id="@+id/suggestion_container_two_pane"
+                layout="@layout/suggestion_container_two_pane"
+                android:visibility="gone"/>
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             app:cardCornerRadius="28dp"
-            app:cardElevation="14dp">
+            app:cardBackgroundColor="@color/dashboard_card_header"
+            app:cardElevation="6dp">
 
         <LinearLayout
             android:id="@+id/app_bar_container"
@@ -38,7 +45,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:theme="@style/Theme.TabTheme"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
 
             <include
                 android:id="@+id/homepage_app_bar_regular_phone_view"
@@ -48,7 +55,7 @@
                 android:id="@+id/homepage_app_bar_two_pane_view"
                 layout="@layout/settings_homepage_app_bar_two_pane_layout"
                 android:visibility="gone"/>
-            
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
@@ -66,7 +73,7 @@
                 app:tabTextColor="?android:attr/textColorSecondary"
                 app:tabInlineLabel="true" />
         </LinearLayout>
-        
+
         </androidx.cardview.widget.CardView>
 
         <FrameLayout
@@ -88,5 +95,5 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
-    
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
