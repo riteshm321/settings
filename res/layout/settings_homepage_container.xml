@@ -37,7 +37,7 @@
             android:layout_margin="10dp"
             app:cardCornerRadius="28dp"
             app:cardBackgroundColor="@color/dashboard_card_header"
-            app:cardElevation="6dp">
+            app:cardElevation="2dp">
 
         <LinearLayout
             android:id="@+id/app_bar_container"
