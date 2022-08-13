@@ -405,7 +405,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         crvsMaintainer.setText(R.string.maintainer_string);
         crvsBuildDate.setText(buildDate);
         String buildType = SystemProperties.get("ro.corvus.build.type");
-        crvsBuildType.setText(buildType);
 
         // Initialise intent for Ravendesk
         btnRavenDesk = bottomSheetDialog.findViewById(R.id.btn_ravendesk);
@@ -420,9 +419,11 @@ public class SettingsHomepageActivity extends FragmentActivity implements
                         btnRavenDesk.setVisibility(View.VISIBLE);
                         statusChip.setBackgroundResource(R.drawable.icon_official);
                         linearLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.corvus_official_color)));
+                        crvsBuildType.setText(buildType);
                     } else {
                         statusChip.setBackgroundResource(R.drawable.icon_unofficial);
-                        linearLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.corvus_unofficial_color)));  
+                        linearLayout.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.corvus_unofficial_color)));
+                        crvsBuildType.setText("UnOfficial");  
                     }
                 },
                 error -> linearLayout.setVisibility(View.GONE));
